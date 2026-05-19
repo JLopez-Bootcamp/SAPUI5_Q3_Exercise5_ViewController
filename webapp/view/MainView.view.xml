@@ -3,22 +3,29 @@
     xmlns="sap.m"
     xmlns:f="sap.ui.layout.form"
     xmlns:core="sap.ui.core">
-    <Page id="page" title="{i18n>title}">
+    <Page id="page" title="{i18n>title}" floatingFooter="true" class="sapUiReponsivePadding--floatingFooter">
     <VBox id="idVBox" class="sapUiSmallMargin">
                 <f:SimpleForm id="idSimpleForm" editable="true" layout="ResponsiveGridLayout" title="Details" labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false">
                     <f:content>
-                        <Label id="idLblFName" text="First Name" />
+                        <Label id="idLblFName" text="{i18n>firstNameLbl}" />
                         <Input id="idInptFName" value="" />
-                        <Label id="idLblLName" text="Last Name" />
+                        <Label id="idLblLName" text="{i18n>lastNameLbl}" />
                         <Input id="idInptLName" value="" />
-                        <Label id="idLblMOP" text="Mode of Payment" />
-                        <Select id="idSelMOP" forceSelection="false">
+                        <Label id="idLblMOP" text="{i18n>modeOfPaymentLbl}" />
+                        <Select id="idSelMOP" forceSelection="false" change="onChangeMOP">
                             <items>
-                                <core:Item id="idItmCOD" text="Cash on Delivery" key="COD"/>
-                                <core:Item id="idItmCC" text="Credit Card" key="CC"/>
-                                <core:Item id="idItmGCash" text="GCash" key="GCASH"/>
+                                <core:Item id="idItmCOD" text="{i18n>cashOnDeliveryLbl}" key="COD"/>
+                                <core:Item id="idItmCC" text="{i18n>creditCardLbl}" key="CC"/>
+                                <core:Item id="idItmGCash" text="{i18n>gCashLbl}" key="GCASH"/>
                             </items>
                         </Select>
+                        <!-- Phone number and credit card number fields -->
+                        <Label id="idLblPhone" text="{i18n>mobileNumberLbl}" visible="false"/>
+                        <Input id="idInputPhone" value="" visible="false"/>
+
+                        <Label id="idLblCreditCard" text="{i18n>creditCardNumberLbl}" visible="false"/>
+                        <Input id="idInputCreditCard" value="" visible="false"/>
+
                     </f:content>
                 </f:SimpleForm>
 
@@ -26,36 +33,36 @@
                     <headerToolbar>
                         <OverflowToolbar id="idOFT">
                             <content>
-                                <Title id="idTableTitleSCart" text="Shopping Cart"/>
+                                <Title id="idTableTitleSCart" text="{i18n>shoppingCartLbl}"/>
                                 <ToolbarSpacer id="idTSpacer"/>
-                                <Button id="idBtnAddItems" icon="sap-icon://cart-4" tooltip="Add to Cart"/>
+                                <Button id="idBtnAddItems" icon="sap-icon://cart-4" tooltip="{i18n>addToCartTooltip}" press="onAddItem"/>
                             </content>
                         </OverflowToolbar>
                     </headerToolbar>
                     <columns>
                         <Column id="idCol1">
-                            <Text id="idColText1" text="Item" />
+                            <Text id="idColText1" text="{i18n>itemColText}" />
                         </Column>
                         <Column id="idCol2">
-                            <Text id="idColText2" text="Quantity" />
+                            <Text id="idColText2" text="{i18n>quantityColText}" />
                         </Column>
                         <Column id="idCol3">
-                            <Text id="idColText3" text="Price" />
+                            <Text id="idColText3" text="{i18n>priceColText}" />
                         </Column>
                     </columns>
                     <items>
                         <ColumnListItem id="idColListItem1" vAlign="Middle">
                             <cells>
-                                <Text id="idText1" text="iPhone 14 Pro Max" />
-                                <Text id="idText2" text="2" />
-                                <Text id="idText3" text="$2000" />
+                                <Text id="idText1" text="{i18n>item1ItemName}" />
+                                <Text id="idText2" text="{i18n>item1Quantity}" />
+                                <Text id="idText3" text="{i18n>item1Price}" />
                             </cells>
                         </ColumnListItem>
                         <ColumnListItem id="idColListItem2" vAlign="Middle">
                             <cells>
-                                <Text id="idText4" text="Louis Vuitton Speedy" />
-                                <Text id="idText5" text="1" />
-                                <Text id="idText6" text="$14000" />
+                                <Text id="idText4" text="{i18n>item2ItemName}" />
+                                <Text id="idText5" text="{i18n>item2Quantity}" />
+                                <Text id="idText6" text="{i18n>item2Price}" />
                             </cells>
                         </ColumnListItem>
                     </items>
@@ -66,7 +73,7 @@
             <footer>
                 <OverflowToolbar id="idOFTFooter">
                     <ToolbarSpacer id="idTSpacerFooter"/>
-                    <Button id="idBtnCheckout" text="Check Out" tooltip="Check Out"/>
+                    <Button id="idBtnCheckout" text="{i18n>checkoutButtonLbl}" tooltip="{i18n>checkoutButtonLbl}" press="onPressCheckout"/>
                 </OverflowToolbar>
             </footer>
     </Page>
